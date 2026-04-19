@@ -546,94 +546,86 @@
     border-top: 1px dashed var(--rule);
   }
 
-  /* -------------------- PHOTOGRAPHY -------------------- */
-  .photo-grid {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: clamp(20px, 2.5vw, 36px);
-  }
-  .photo-series {
-    cursor: pointer;
-    transition: transform 0.3s ease;
-  }
-  .photo-series:hover { transform: translateY(-3px); }
-  .photo-series:hover .photo-title { color: var(--rust); }
-  .photo-plate {
-    aspect-ratio: 3 / 4;
-    width: 100%;
-    position: relative;
-    overflow: hidden;
-    margin-bottom: 16px;
-  }
-  .photo-plate.landscape { aspect-ratio: 4 / 3; }
-  .photo-plate::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.25) 100%);
-    pointer-events: none;
-  }
-  .photo-plate .plate-label {
-    position: absolute;
-    top: 16px;
-    left: 16px;
+  /* -------------------- PHOTOGRAPHY ---------------------- */
+  .series-intro { margin-bottom: 48px; }
+  .series-tag {
     font-family: var(--mono);
-    font-size: 10px;
+    font-size: 11px;
     letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: rgba(243, 239, 230, 0.82);
-    z-index: 2;
-  }
-  .photo-plate .plate-count {
-    position: absolute;
-    bottom: 16px;
-    right: 16px;
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.22em;
-    color: rgba(243, 239, 230, 0.82);
-    z-index: 2;
-  }
-
-  .photo-series.feature { grid-column: span 8; }
-  .photo-series.feature .photo-plate { aspect-ratio: 5 / 4; }
-  .photo-series.side { grid-column: span 4; }
-  .photo-series.half { grid-column: span 6; }
-  .photo-series.third { grid-column: span 4; }
-
-  @media (max-width: 900px) {
-    .photo-series.feature,
-    .photo-series.side,
-    .photo-series.half,
-    .photo-series.third { grid-column: span 12; }
-  }
-
-  .photo-meta {
-    display: flex;
-    justify-content: space-between;
-    font-family: var(--mono);
-    font-size: 10.5px;
-    letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--dust);
-    margin-bottom: 8px;
+    display: block;
+    margin-bottom: 16px;
   }
-  .photo-title {
+  .series-title {
     font-family: var(--display);
     font-weight: 400;
-    font-size: 22px;
-    line-height: 1.2;
-    font-variation-settings: "opsz" 60;
-    transition: color 0.25s ease;
-    margin-bottom: 4px;
+    font-size: clamp(28px, 3.2vw, 42px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    font-variation-settings: "opsz" 80;
+    margin-bottom: 10px;
   }
-  .photo-title em { font-style: italic; font-weight: 300; }
-  .photo-caption {
+  .series-title em { font-style: italic; font-weight: 300; }
+  .series-subtitle {
     font-family: var(--body);
-    font-size: 14px;
-    line-height: 1.5;
-    color: var(--ink-soft);
     font-style: italic;
+    font-size: 16px;
+    color: var(--ink-soft);
+  }
+
+  .photo-figure {
+    margin: 0 0 56px 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .photo-figure img {
+    width: 100%;
+    height: auto;
+    display: block;
+    box-shadow: 0 2px 8px rgba(26, 23, 19, 0.08), 0 20px 40px rgba(26, 23, 19, 0.06);
+  }
+  .photo-figure figcaption {
+    margin-top: 18px;
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 24px;
+    align-items: baseline;
+    padding-left: 2px;
+  }
+  .photo-figure .plate-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--dust);
+  }
+  .photo-figure .plate-text {
+    font-family: var(--body);
+    font-style: italic;
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 60ch;
+  }
+
+  .hero-photo { margin-bottom: 72px; }
+  .hero-photo img { max-height: 85vh; object-fit: contain; object-position: center; background: transparent; }
+
+  .photo-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(20px, 3vw, 40px);
+    margin-bottom: 32px;
+  }
+  .photo-row .photo-figure { margin-bottom: 24px; }
+  .photo-row .photo-figure figcaption { grid-template-columns: 70px 1fr; gap: 16px; }
+  .photo-row .photo-figure .plate-text { font-size: 14.5px; }
+
+  @media (max-width: 760px) {
+    .photo-row { grid-template-columns: 1fr; }
+    .photo-figure figcaption { grid-template-columns: 60px 1fr; gap: 14px; }
+    .photo-figure .plate-text { font-size: 14.5px; }
   }
 
   .ig-link {
@@ -981,10 +973,10 @@
 
       <!-- PHOTO -->
       <a class="work wide" href="#photography">
-        <div class="work-plate plate-e"></div>
-        <div class="work-meta"><span>02 / Photography</span><span>2023–24</span></div>
+        <div class="work-plate" style="background: url('images/01-woman-laughing.jpg') center/cover; aspect-ratio: 4 / 3;"></div>
+        <div class="work-meta"><span>02 / Photography</span><span>2019–20</span></div>
         <h3 class="work-title"><em>They Have Known Me All Their Life</em></h3>
-        <p class="work-excerpt">A photo essay in eleven images from rural Jharkhand. Literary documentary captions; a pitch under review at Fountain Ink.</p>
+        <p class="work-excerpt">A photo essay in six frames from rural Jharkhand. Literary documentary captions; a pitch under review at Fountain Ink.</p>
         <span class="work-more">View plate <span class="arrow">→</span></span>
       </a>
 
@@ -1189,59 +1181,67 @@
         <span class="section-label">§ 05 — Photography</span>
         <h2>Photography</h2>
       </div>
-      <p class="desc">Curated image series by theme. Documentary work, portrait, and the quieter frames that fall between. Series titles link to full plates; captions are written as literary documentary, not extended labels.</p>
+      <p class="desc">Documentary work from rural Jharkhand, made during fieldwork on witch-hunting and gender-based violence. Photographs taken with free, prior, and informed consent. Captions written as literary documentary, not extended labels.</p>
     </div>
 
-    <div class="photo-grid">
-      <a class="photo-series feature" href="#">
-        <div class="photo-plate plate-e">
-          <span class="plate-label">Plate I · Jharkhand</span>
-          <span class="plate-count">11 frames</span>
-        </div>
-        <div class="photo-meta"><span>Series 01</span><span>2023 – 2024</span></div>
-        <h3 class="photo-title"><em>They Have Known Me All Their Life</em></h3>
-        <p class="photo-caption">Eleven images from rural Jharkhand; portraits, interiors, ground. Under pitch at Fountain Ink.</p>
-      </a>
+    <div class="series-intro">
+      <div class="series-title-block">
+        <span class="series-tag">Series 01 · 2019 – 2020</span>
+        <h3 class="series-title"><em>They Have Known Me All Their Life</em></h3>
+        <p class="series-subtitle">A photo essay in six frames. Under pitch at Fountain Ink.</p>
+      </div>
+    </div>
 
-      <a class="photo-series side" href="#">
-        <div class="photo-plate plate-d">
-          <span class="plate-label">Plate II · English Bay</span>
-          <span class="plate-count">Ongoing</span>
-        </div>
-        <div class="photo-meta"><span>Series 02</span><span>2025 –</span></div>
-        <h3 class="photo-title">Near water</h3>
-        <p class="photo-caption">Walking notes from the shore. A slow series without a title year.</p>
-      </a>
+    <figure class="photo-figure hero-photo">
+      <img src="images/01-woman-laughing.jpg" alt="A woman laughing, seated on a bench against a blue-and-red brick wall" loading="lazy">
+      <figcaption>
+        <span class="plate-num">Plate I</span>
+        <span class="plate-text">She laughed when I asked if I could photograph her. The interview had ended an hour ago. She had been waiting — not for me, for something else. The light was going.</span>
+      </figcaption>
+    </figure>
 
-      <a class="photo-series third" href="#">
-        <div class="photo-plate plate-a landscape">
-          <span class="plate-label">Plate III · Delhi</span>
-          <span class="plate-count">In edit</span>
-        </div>
-        <div class="photo-meta"><span>Series 03</span><span>2024</span></div>
-        <h3 class="photo-title">Return, in three rooms</h3>
-        <p class="photo-caption">Interiors and thresholds, photographed across one trip home.</p>
-      </a>
+    <div class="photo-row">
+      <figure class="photo-figure">
+        <img src="images/02-sisters.jpg" alt="Two sisters in a doorway, one in saffron, one in orange" loading="lazy">
+        <figcaption>
+          <span class="plate-num">Plate II</span>
+          <span class="plate-text">Sisters at the threshold. Their mother is just visible in the room behind them, watching to see what we would do.</span>
+        </figcaption>
+      </figure>
 
-      <a class="photo-series third" href="#">
-        <div class="photo-plate plate-c landscape">
-          <span class="plate-label">Plate IV · Portrait</span>
-          <span class="plate-count">Selected</span>
-        </div>
-        <div class="photo-meta"><span>Series 04</span><span>2022 –</span></div>
-        <h3 class="photo-title">Near strangers</h3>
-        <p class="photo-caption">Portraits made at close range. Consent foregrounded in every frame.</p>
-      </a>
+      <figure class="photo-figure">
+        <img src="images/03-granary.jpg" alt="A thatched granary with a cow and a dog resting in its shade" loading="lazy">
+        <figcaption>
+          <span class="plate-num">Plate III</span>
+          <span class="plate-text">The granary. What gets stored here, who stores it, and under whose name it sits — these were the questions the thesis kept returning to.</span>
+        </figcaption>
+      </figure>
+    </div>
 
-      <a class="photo-series third" href="#">
-        <div class="photo-plate plate-f landscape">
-          <span class="plate-label">Plate V · Archive</span>
-          <span class="plate-count">Forthcoming</span>
-        </div>
-        <div class="photo-meta"><span>Series 05</span><span>—</span></div>
-        <h3 class="photo-title">Unfiled</h3>
-        <p class="photo-caption">Images that do not yet belong to a series, held here until they do.</p>
-      </a>
+    <figure class="photo-figure hero-photo">
+      <img src="images/05-boys.jpg" alt="Two boys standing in front of a yellow house with shuttered window" loading="lazy">
+      <figcaption>
+        <span class="plate-num">Plate IV</span>
+        <span class="plate-text">They watched me set up the frame for a long time before they agreed to stand for it. The one on the left had been told he looked serious in photographs. He wanted to try again.</span>
+      </figcaption>
+    </figure>
+
+    <div class="photo-row">
+      <figure class="photo-figure">
+        <img src="images/04-woman-working.jpg" alt="A woman bending to gather twigs on dry ground" loading="lazy">
+        <figcaption>
+          <span class="plate-num">Plate V</span>
+          <span class="plate-text">Gathering. One of the first women I interviewed, on the walk back toward her house. The fieldnotes from that afternoon ran to fourteen pages.</span>
+        </figcaption>
+      </figure>
+
+      <figure class="photo-figure">
+        <img src="images/06-asha.jpg" alt="An interviewee seated under a veranda of a blue building, speaking with the researcher" loading="lazy">
+        <figcaption>
+          <span class="plate-num">Plate VI</span>
+          <span class="plate-text">The ASHA building, late morning. An interview beginning. The researcher is in the frame on purpose — fieldwork is never invisible, and it should not pretend to be.</span>
+        </figcaption>
+      </figure>
     </div>
 
     <a class="ig-link" href="https://instagram.com/dua_yatin" target="_blank" rel="noopener">
