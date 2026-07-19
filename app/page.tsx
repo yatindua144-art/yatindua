@@ -128,6 +128,8 @@ export default function Home() {
             <a href="/ideas">Writing</a>
             <a href="#photography">Photography</a>
             <a href="#about">About</a>
+            <a href="https://www.linkedin.com/in/yatindua17/" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a href="https://yatindua.substack.com/" target="_blank" rel="noreferrer">Substack</a>
           </div>
         </nav>
 
@@ -349,7 +351,8 @@ export default function Home() {
           </p>
           <div className="contactLinks">
             <a href="mailto:yatindua144@gmail.com">yatindua144@gmail.com</a>
-            <a href="https://www.linkedin.com/in/yatin-dua/">LinkedIn</a>
+            <a href="https://www.linkedin.com/in/yatindua17/" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a href="https://yatindua.substack.com/" target="_blank" rel="noreferrer">Substack</a>
             <span>Vancouver, British Columbia</span>
           </div>
         </div>
@@ -357,7 +360,11 @@ export default function Home() {
 
       <footer className="footer shell">
         <span>© 2026 Yatin Dua</span>
-        <a href="#top">Return to top ↑</a>
+        <div className="footerLinks">
+          <a href="https://www.linkedin.com/in/yatindua17/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+          <a href="https://yatindua.substack.com/" target="_blank" rel="noreferrer">Substack ↗</a>
+          <a href="#top">Return to top ↑</a>
+        </div>
       </footer>
     </main>
   );

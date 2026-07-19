@@ -108,6 +108,7 @@ export default function IdeasPage() {
           <a href="#essays">Essays</a>
           <a href="#poetry">Poetry</a>
           <a href="#questions">Open questions</a>
+          <a href="https://yatindua.substack.com/" target="_blank" rel="noreferrer">Substack</a>
         </div>
       </nav>
 
@@ -150,6 +151,10 @@ export default function IdeasPage() {
               </details>
             ))}
           </div>
+          <div className="externalWriting">
+            <p>For published pieces and new writing beyond this portfolio:</p>
+            <a className="textLink" href="https://yatindua.substack.com/" target="_blank" rel="noreferrer">Read on Substack <span aria-hidden="true">↗</span></a>
+          </div>
         </div>
       </section>
 
@@ -182,7 +187,7 @@ export default function IdeasPage() {
         </div>
       </section>
 
-      <footer className="footer shell"><span>© 2026 Yatin Dua</span><a href="#top">Return to top ↑</a></footer>
+      <footer className="footer shell"><span>© 2026 Yatin Dua</span><div className="footerLinks"><a href="https://www.linkedin.com/in/yatindua17/" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://yatindua.substack.com/" target="_blank" rel="noreferrer">Substack ↗</a><a href="#top">Return to top ↑</a></div></footer>
     </main>
   );
 }
