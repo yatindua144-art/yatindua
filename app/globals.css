@@ -174,6 +174,7 @@ h2 { margin: .8rem 0 0; font-size: clamp(3.2rem, 6.5vw, 7rem); line-height: .92;
 .contactLinks { display: flex; flex-wrap: wrap; gap: 1rem 1.4rem; margin-top: 2.8rem; padding-top: 1.5rem; border-top: 1px solid var(--ink); font-family: var(--mono); font-size: .69rem; letter-spacing: .08em; text-transform: uppercase; }
 .footer { display: flex; justify-content: space-between; padding-block: 1.5rem 2.5rem; border-top: 1px solid var(--rule); color: var(--ink-soft); font-family: var(--mono); font-size: .65rem; letter-spacing: .08em; text-transform: uppercase; }
 .footer a { text-decoration: none; }
+.footerLinks { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 1.5rem; }
 
 /* Ideas and writing library */
 .libraryPage { background: var(--paper); }
@@ -207,11 +208,18 @@ h2 { margin: .8rem 0 0; font-size: clamp(3.2rem, 6.5vw, 7rem); line-height: .92;
 .essaySection { padding-block: clamp(7rem,10vw,10rem); background: var(--paper-deep); }
 .essayGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; border: 1px solid var(--rule); background: var(--rule); }
 .essayCard { min-height: 390px; padding: 2rem; background: rgba(255,250,240,.38); }
-.essayCard summary { height: 100%; display: flex; flex-direction: column; cursor: pointer; list-style: none; }
+.essayCard summary { min-height: 326px; display: flex; flex-direction: column; cursor: pointer; list-style: none; }
+.essayCard[open] summary { min-height: 0; padding-bottom: 2rem; }
 .essayCard h3 { margin-top: 3rem; }
 .essayCard summary > p { color: var(--ink-soft); }
-.essayCard .entryDetail { margin: 1.5rem 0 0; }
+.essayCard .entryDetail { max-width: none; margin: 0; padding: 2rem 0 .5rem; }
+.essayCard[open] .cardControl { margin-top: 1rem; }
+.essayCard[open] .cardControl { font-size: 0; }
+.essayCard[open] .cardControl::after { content: "Close context −"; font-size: .67rem; }
 .cardControl { margin-top: auto; padding-top: 2rem; color: var(--copper); font-family: var(--mono); font-size: .67rem; letter-spacing: .1em; text-transform: uppercase; }
+.externalWriting { display: flex; align-items: center; justify-content: space-between; gap: 2rem; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--rule); }
+.externalWriting p { margin: 0; color: var(--ink-soft); }
+.externalWriting .textLink { flex: 0 0 auto; margin-top: 0; }
 .poetrySection { padding-block: clamp(7rem,11vw,11rem); color: var(--pale); background: radial-gradient(circle at 15% 20%,rgba(158,77,45,.18),transparent 28rem),#1b1c19; }
 .poetryGrid { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(4rem,9vw,10rem); }
 .poetryGrid h2 { font-size: clamp(3rem,5.6vw,6rem); }
@@ -275,6 +283,8 @@ h2 { margin: .8rem 0 0; font-size: clamp(3.2rem, 6.5vw, 7rem); line-height: .92;
   .photoGrid .photoLarge img, .photoGrid img { height: auto; aspect-ratio: 4/3; }
   .photoGrid figure:nth-child(3) { margin-top: 0; }
   .contactLinks { flex-direction: column; }
+  .footer { align-items: flex-start; gap: 1.5rem; }
+  .footerLinks { flex-direction: column; align-items: flex-end; gap: .65rem; }
   .libraryNav .navLinks { display: none; }
   .libraryHero { padding-block: 6rem 4rem; }
   .libraryHero h1 { font-size: clamp(3.8rem,16vw,6rem); }
@@ -289,6 +299,8 @@ h2 { margin: .8rem 0 0; font-size: clamp(3.2rem, 6.5vw, 7rem); line-height: .92;
   .entryControl { grid-column: 2; grid-row: 1; }
   .entryDetail { margin-right: 0; }
   .essayGrid, .questionGrid { grid-template-columns: 1fr; }
+  .essayCard, .essayCard summary { min-height: auto; }
+  .externalWriting { align-items: flex-start; flex-direction: column; }
   .researchQuestion { min-height: auto; }
   .workingQuestion { grid-template-columns: 34px 1fr 26px; gap: 1rem; }
   .questionConnection { grid-column: 2; }
