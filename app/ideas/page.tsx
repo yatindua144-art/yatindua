@@ -28,6 +28,15 @@ const policyNotes = [
   },
 ];
 
+const featuredEssay = {
+  date: "2026",
+  status: "Municipal affairs / Public affairs",
+  title: "The Vancouver Election Question Nobody Is Asking",
+  summary:
+    "The mayoral race will dominate Vancouver's 2026 election. For organizations with a file at City Hall, the more useful question is what the next political arrangement allows the institution to keep doing.",
+  href: "/ideas/vancouver-election-question",
+};
+
 const essays = [
   {
     date: "2026",
@@ -143,6 +152,14 @@ export default function IdeasPage() {
       <section className="librarySection essaySection" id="essays">
         <div className="shell">
           <div className="librarySectionHead"><p className="label">02 / Essays</p><h2>Arguments that keep the person inside them.</h2></div>
+          <a className="featuredEssay" href={featuredEssay.href}>
+            <div className="entryMeta"><span>{featuredEssay.date}</span><span>{featuredEssay.status}</span></div>
+            <div>
+              <h3>{featuredEssay.title}</h3>
+              <p>{featuredEssay.summary}</p>
+            </div>
+            <span className="featuredEssayControl">Read the full essay <span aria-hidden="true">→</span></span>
+          </a>
           <div className="essayGrid">
             {essays.map((item) => (
               <details className="essayCard" key={item.title}>
