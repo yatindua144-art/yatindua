@@ -1,371 +1,81 @@
-const investigations = [
-  {
-    number: "01",
-    place: "Gastown, Vancouver",
-    title: "What happens when the same street is described as two different crises?",
-    summary:
-      "Businesses emphasized safety and public disorder. Service providers emphasized poverty, harm reduction, and the absence of low-barrier support. The shared failure was not a lack of concern. It was the lack of a reliable communication system between the groups responding to the same street.",
-    methods: ["16 service providers", "36 businesses", "Mixed methods", "Direct canvassing"],
-    field: "Conflicting experiences of public space",
-    system: "Fragmented municipal, business, and outreach response",
-    decision: "A shared communication protocol",
-  },
-  {
-    number: "02",
-    place: "Squamish Nation",
-    title: "How does a funded program remain accountable without losing sight of the person?",
-    summary:
-      "Workforce programs carry two responsibilities at once: support participants through real barriers and satisfy the rules attached to public funding. I built the operational systems that held intake, progress, safety records, vendors, and reporting together across concurrent programs.",
-    methods: ["5 programs", "4–5 agreements", "Audit readiness", "Excel dashboards"],
-    field: "Participants navigating practical barriers",
-    system: "Eligibility, safety, funding, and reporting requirements",
-    decision: "Usable workflows that preserved both care and compliance",
-  },
-  {
-    number: "03",
-    place: "British Columbia",
-    title: "The pass rate is not the outcome.",
-    summary:
-      "BCTA's MELT analysis raises a useful next question: does a higher first-attempt road-test pass rate translate into consistent training, first-job readiness, and early safety performance? This independent note proposes a carrier evidence protocol to find out.",
-    methods: ["Regulatory scan", "Evaluation design", "Carrier pulse", "Decision framework"],
-    field: "Carrier and newly licensed driver experience",
-    system: "Training, licensing, onboarding, and safety oversight",
-    decision: "A lean thirty-day evaluation pilot",
-  },
-  {
-    number: "04",
-    place: "Jharkhand, India",
-    title: "When violence is explained as superstition, what disappears from view?",
-    summary:
-      "A self-funded field study examined witch-hunting not as an isolated belief but as violence shaped by land, inheritance, caste, widowhood, poverty, and women's refusal to remain socially legible.",
-    methods: ["100+ interviews", "150+ surveys", "Field research", "Human-rights analysis"],
-    field: "Testimony from women and community actors",
-    system: "Gender, property, social power, and institutional protection",
-    decision: "An explanation grounded in evidence rather than folklore",
-  },
+import ConversationGuide from "./components/ConversationGuide";
+
+const selectedWork = [
+  { number: "01", date: "August 2026", type: "Editing", title: "The Most Important Sentence Is Usually Buried", description: "What policy and academic writing taught me about editing research for a public reader.", href: "/ideas/important-sentence", className: "workCard workCardFeature workCardCoral" },
+  { number: "02", date: "August 2026", type: "Municipal affairs", title: "The Vancouver Election Question Nobody Is Asking", description: "The consequential question is not only who wins, but what the next political arrangement lets City Hall keep doing.", href: "/ideas/vancouver-election-question", className: "workCard workCardBlue" },
+  { number: "03", date: "July 2026", type: "Evaluation note", title: "The Pass Rate Is Not the Outcome", description: "A blueprint for evaluating training through readiness, safety, and the feedback loop after graduation.", href: "/ideas/pass-rate", className: "workCard workCardLime" },
+  { number: "04", date: "November 2024", type: "Research essay", title: "Community Care in Action", description: "What a neighbourhood institution can contribute to Vancouver's response to homelessness, and where its role should end.", href: "/ideas/community-care", className: "workCard workCardInk" },
 ];
 
-const libraryPreview = [
-  {
-    type: "Public essay",
-    title: "More than stewards",
-    text: "Indigenous leadership, clean-energy labour, and what a more honest transition conversation must admit.",
-  },
-  {
-    type: "Field essay",
-    title: "The first explanation is never the complete explanation",
-    text: "What field research in Jharkhand and observation in Vancouver taught me about explanations that make systems comfortable.",
-  },
-  {
-    type: "Open question",
-    title: "What does Canada actually mean by skill?",
-    text: "An inquiry into occupational classification, migration, and the administrative production of deskilling.",
-  },
-  {
-    type: "Poetry",
-    title: "Burning Dry",
-    text: "A published poem on nation, identity, violence, and the colours made to carry them.",
-  },
-];
-
-const workingQuestions = [
-  {
-    number: "01",
-    theme: "Institutions & lived experience",
-    question: "What gets lost when consultation is treated as data collection?",
-    connection: "Gastown research / Field essay",
-  },
-  {
-    number: "02",
-    theme: "Work & mobility",
-    question: "What does Canada actually mean by skill?",
-    connection: "Workforce programs / Migration essay",
-  },
-  {
-    number: "03",
-    theme: "Care & accountability",
-    question: "When does compliance strengthen a program, and when does it narrow care?",
-    connection: "Squamish Nation / Program practice",
-  },
-  {
-    number: "04",
-    theme: "Safety & public space",
-    question: "Who is permitted to define safety in a contested place?",
-    connection: "Gastown / Open inquiry",
-  },
-];
-
-const pathways = [
-  {
-    title: "Institutions and lived experience",
-    prompt: "Where the administrative account and the human account stop matching.",
-    links: ["Squamish Nation programs", "The first explanation", "Invited, Then Asked to Leave"],
-  },
-  {
-    title: "Belonging and public space",
-    prompt: "How safety, care, authority, and visibility are negotiated in shared places.",
-    links: ["Gastown research", "Public-space inquiry", "Four Names for the Same Water"],
-  },
-  {
-    title: "Work, mobility and opportunity",
-    prompt: "How institutions recognize skill, distribute opportunity, and produce exclusion.",
-    links: ["Workforce programming", "Jharkhand fieldwork", "Before You Come to Canada"],
-  },
+const openQuestions = [
+  { title: "What does Canada actually mean by skill?", text: "The obvious answer is education, experience, and occupational competence. But immigration selection, licensing systems, employer expectations, and the demand for Canadian experience do not recognize those things consistently. I am interested in how their interaction produces deskilling rather than merely recording it." },
+  { title: "Who is permitted to define safety in contested public space?", text: "Businesses, residents, service providers, street-involved people, police, and municipal agencies can experience the same place through different forms of risk. The easy response is to decide which account is correct. My question is what safety policy misses when one group's immediate experience becomes the complete definition of the problem." },
+  { title: "What would maternal-health access designed from Bella Bella look like?", text: "A service can exist on paper and remain inaccessible in practice. Urban assumptions about connectivity, specialist availability, and travel distance can reproduce exclusion in rural and remote communities. I am interested in whether the useful intervention is a community-governed information and navigation layer rather than another isolated application." },
+  { title: "When does compliance strengthen a program, and when does it narrow care?", text: "Public funding rules create necessary accountability, but they also shape eligibility, timelines, documentation burdens, and the support staff can provide. The question is how operational design determines whether accountability and participant-centred delivery reinforce or undermine one another." },
 ];
 
 export default function Home() {
   return (
-    <main>
-      <header className="hero" id="top">
-        <nav className="nav shell" aria-label="Primary navigation">
-          <a className="identity" href="#top">
-            <strong>Yatin Dua</strong>
-            <span>Vancouver, BC</span>
-          </a>
+    <main className="livingHome" id="top">
+      <section className="livingHero">
+        <nav className="nav shell livingNav" aria-label="Primary navigation">
+          <a className="identity" href="#top"><strong>Yatin Dua</strong><span>Writer / Researcher</span></a>
           <div className="navLinks">
-            <a href="#work">Work</a>
-            <a href="#questions">Questions</a>
-            <a href="/ideas">Writing</a>
-            <a href="#photography">Photography</a>
-            <a href="#about">About</a>
-            <a href="https://www.linkedin.com/in/yatindua17/" target="_blank" rel="noreferrer">LinkedIn</a>
-            <a href="https://yatindua.substack.com/" target="_blank" rel="noreferrer">Substack</a>
+            <a href="#writing">Writing</a><a href="#questions">Questions</a><a href="#about">About</a><a href="mailto:yatindua144@gmail.com">Say hello ↗</a>
           </div>
         </nav>
 
-        <div className="heroBody shell">
-          <div className="heroCopy">
-            <p className="label">Field research / Public systems / Applied policy</p>
-            <h1>
-              Policy begins where people meet systems<span>.</span>
-            </h1>
-            <p className="heroIntro">
-              I study the distance between how institutions design programs and
-              how people experience them, using field research, policy interpretation,
-              program practice, and writing to make that distance visible.
-            </p>
-            <a className="textLink" href="#work">
-              View selected investigations <span aria-hidden="true">→</span>
-            </a>
-          </div>
-          <div className="systemMap" aria-hidden="true">
-            <span className="route routeA" />
-            <span className="route routeB" />
-            <span className="route routeC" />
-            <span className="contours contourA" />
-            <span className="contours contourB" />
-            <span className="node nodeA" />
-            <span className="node nodeB" />
-            <span className="node nodeC" />
-            <span className="node nodeD" />
-          </div>
+        <div className="livingHeroGrid shell">
+          <header className="livingHeroCopy">
+            <p className="liveEyebrow"><span aria-hidden="true" /> Vancouver / August 2026</p>
+            <h1>I do not trust <em>the first</em> explanation.</h1>
+            <p>Writing about public systems, power, and the distance between how institutions describe people and how people experience them.</p>
+          </header>
+          <ConversationGuide />
         </div>
 
-        <div className="methodRail shell" aria-label="Practice framework">
-          <div><span>Field</span><strong>Listen closely</strong></div>
-          <div><span>System</span><strong>Trace the rules</strong></div>
-          <div><span>Decision</span><strong>Make evidence usable</strong></div>
-        </div>
-      </header>
+        <div className="signalTicker" aria-hidden="true"><div className="tickerTrack">
+          <span>Editing</span><i>✦</i><span>Public systems</span><i>✦</i><span>Vancouver</span><i>✦</i><span>Evidence</span><i>✦</i><span>Open questions</span><i>✦</i><span>Editing</span><i>✦</i><span>Public systems</span><i>✦</i><span>Vancouver</span><i>✦</i>
+        </div></div>
+      </section>
 
-      <section className="questions section shell" id="questions">
-        <div className="sectionIntro questionIntro">
-          <p className="label">Questions I&apos;m working on</p>
-          <h2>A practice organized by inquiry.</h2>
-          <p>
-            These are active questions, not finished positions. Each connects
-            evidence already gathered with work that remains to be done.
-          </p>
+      <section className="workPortal section shell" id="writing">
+        <div className="portalHeading">
+          <p className="sectionCode">02 / Enter the work</p><h2>Choose a way in.</h2><p>Four arguments. Four different tests of the easy explanation.</p>
         </div>
-        <div className="workingQuestionList">
-          {workingQuestions.map((item) => (
-            <a href="/ideas#questions" className="workingQuestion" key={item.number}>
-              <span className="questionNumber">{item.number}</span>
-              <div><span className="questionTheme">{item.theme}</span><h3>{item.question}</h3></div>
-              <span className="questionConnection">{item.connection}</span>
-              <span className="questionArrow" aria-hidden="true">↗</span>
+        <div className="bentoWork">
+          {selectedWork.map((item) => (
+            <a className={item.className} href={item.href} key={item.title}>
+              <div className="workCardMeta"><span>{item.number}</span><span>{item.date}</span></div>
+              <div className="workCardBody"><p>{item.type}</p><h3>{item.title}</h3><div>{item.description}</div></div>
+              <span className="workCardArrow" aria-hidden="true">↗</span>
             </a>
           ))}
         </div>
+        <a className="archiveDoor" href="/ideas"><span>Not sure where to begin?</span><strong>See the complete writing archive</strong><b aria-hidden="true">→</b></a>
       </section>
 
-      <section className="work section shell" id="work">
-        <div className="sectionIntro">
-          <p className="label">Selected investigations</p>
-          <h2>Public questions, followed all the way through.</h2>
-          <p>
-            Each case moves from lived experience to institutional structure
-            to a decision someone could actually make.
-          </p>
-        </div>
-
-        <div className="investigations">
-          {investigations.map((project) => (
-            <article className="investigation" key={project.number}>
-              <div className="projectMeta">
-                <span className="projectNumber">{project.number}</span>
-                <span>{project.place}</span>
-              </div>
-              <div className="projectCore">
-                <h3>{project.title}</h3>
-                <p>{project.summary}</p>
-                <ul className="methodTags" aria-label="Project methods and scale">
-                  {project.methods.map((method) => <li key={method}>{method}</li>)}
-                </ul>
-              </div>
-              <dl className="projectLogic">
-                <div><dt>Field</dt><dd>{project.field}</dd></div>
-                <div><dt>System</dt><dd>{project.system}</dd></div>
-                <div><dt>Decision</dt><dd>{project.decision}</dd></div>
-              </dl>
-            </article>
+      <section className="questionLab section" id="questions"><div className="shell">
+        <div className="questionLabHead"><p className="sectionCode">03 / Notebook in public</p><div><h2>Questions with<br />the answers removed.</h2><p>Open one. This is what I am still trying to understand.</p></div></div>
+        <div className="questionAccordion">
+          {openQuestions.map((item, index) => (
+            <details key={item.title}><summary><span>{String(index + 1).padStart(2, "0")}</span><h3>{item.title}</h3><b aria-hidden="true">+</b></summary><div className="questionAnswer"><p>{item.text}</p></div></details>
           ))}
         </div>
-      </section>
+      </div></section>
 
-      <section className="note section" id="notes">
-        <div className="shell noteGrid">
-          <div>
-            <p className="label labelLight">Current policy note / Transportation</p>
-            <h2>The pass rate is not the outcome.</h2>
-          </div>
-          <div className="noteBody">
-            <p className="noteLead">
-              A practical framework for evaluating whether BC&apos;s Mandatory
-              Entry-Level Training program produces consistent training,
-              work-ready graduates, and a system that learns from carrier evidence.
-            </p>
-            <div className="noteStats">
-              <div><strong>26,873</strong><span>road tests examined by BCTA</span></div>
-              <div><strong>63%</strong><span>post-MELT first-attempt pass rate</span></div>
-              <div><strong>4</strong><span>proposed evaluation lenses</span></div>
-            </div>
-            <p className="boundary">
-              Independent concept note based on public aggregate information.
-              It does not claim completed primary research or assess individual providers.
-            </p>
-          </div>
+      <section className="conversationAbout section shell" id="about">
+        <div className="aboutPrompt"><p className="sectionCode">04 / The obvious question</p><p>You might be asking:</p><h2>Why writing<br />after policy?</h2></div>
+        <div className="aboutAnswer">
+          <p className="aboutLead">Because policy taught me to find the decision buried inside a document. Writing makes that judgment useful to a reader.</p>
+          <div className="aboutColumns"><p>I am a writer and researcher based in Vancouver. My work moves across public systems, field research, program delivery, and the language institutions use to explain their choices.</p><p>I am looking for editorial and research roles where judgment matters: deciding what the real question is, what the evidence supports, what the prose is hiding, and what a reader needs next.</p></div>
+          <div className="thinkingTags" aria-label="Areas of practice"><span>Field research</span><span>Public systems</span><span>Editorial judgment</span><span>Community knowledge</span></div>
         </div>
       </section>
 
-      <section className="fieldNote section shell" id="field-note">
-        <div className="fieldNoteHead">
-          <p className="label">From the field / 01</p>
-          <span>Gastown, Vancouver / 2024</span>
-        </div>
-        <div className="fieldNoteGrid">
-          <div className="fieldObservation">
-            <p className="fieldKicker">One observation. One policy question. Evidence still needed.</p>
-            <h2>Agreement was hiding inside the disagreement.</h2>
-          </div>
-          <dl className="fieldSequence">
-            <div><dt>Observed tension</dt><dd>Businesses described safety and disorder. Service providers described poverty, harm reduction, and insufficient low-barrier support.</dd></div>
-            <div><dt>Closer finding</dt><dd>Both groups identified a failure of rapid, dependable communication between businesses and outreach teams.</dd></div>
-            <div><dt>Policy question</dt><dd>Can a shared operating protocol create progress when ideological consensus is unlikely?</dd></div>
-            <div><dt>Evidence needed next</dt><dd>Response-time data, incident pathways, participant interviews, and a limited protocol pilot.</dd></div>
-          </dl>
-        </div>
-        <p className="evidenceStrip"><strong>Evidence status:</strong> Field observation drawn from a mixed-methods project with 16 service providers and 36 businesses. The proposed protocol remains a recommendation, not an evaluated intervention.</p>
-      </section>
+      <section className="humanDoor shell"><p>05 / This part is human</p><h2>Still have a question?</h2><div><p>Good. Send it to me.</p><a href="mailto:yatindua144@gmail.com">yatindua144@gmail.com <span>↗</span></a></div></section>
 
-      <section className="pathways section" id="pathways">
-        <div className="shell">
-          <div className="sectionIntro compact">
-            <p className="label">Explore by theme</p>
-            <h2>Different forms. Recurring concerns.</h2>
-          </div>
-          <div className="pathwayGrid">
-            {pathways.map((item, index) => (
-              <article className="pathway" key={item.title}>
-                <span className="pathwayNumber">0{index + 1}</span>
-                <h3>{item.title}</h3>
-                <p>{item.prompt}</p>
-                <ul>{item.links.map((link) => <li key={link}>{link}</li>)}</ul>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="writing section shell" id="writing">
-        <div className="sectionIntro compact">
-          <p className="label">Ideas &amp; writing</p>
-          <div>
-            <h2>Arguments, poems, and questions still being worked through.</h2>
-            <a className="textLink libraryLink" href="/ideas">Explore the complete library <span aria-hidden="true">→</span></a>
-          </div>
-        </div>
-        <div className="writingList">
-          {libraryPreview.map((item) => (
-            <article key={item.title}>
-              <span>{item.type}</span>
-              <h3>{item.title}</h3>
-              <p>{item.text}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="photography section" id="photography">
-        <div className="shell photoHeader">
-          <p className="label labelLight">Photography</p>
-          <h2>Observation before explanation.</h2>
-          <p>
-            Photographs are not decoration for the policy work. They are a separate
-            practice of attention, context, and memory.
-          </p>
-        </div>
-        <div className="photoGrid shell">
-          <figure className="photoLarge">
-            <img src="/portfolio/jharkhand-fieldwork.jpg" alt="A field interview taking place beneath a veranda in Jharkhand" />
-            <figcaption>Jharkhand / field research / 2022</figcaption>
-          </figure>
-          <figure>
-            <img src="/portfolio/delhi-corridor.jpg" alt="A long black-and-white corridor after rain in Delhi" />
-            <figcaption>Delhi / after rain</figcaption>
-          </figure>
-          <figure>
-            <img src="/portfolio/room-desk.jpg" alt="A lived-in room with a desk, books, maps, and a framed photograph" />
-            <figcaption>A Room Held / private archive</figcaption>
-          </figure>
-        </div>
-      </section>
-
-      <section className="about section shell" id="about">
-        <div className="aboutStatement">
-          <p className="label">About the practice</p>
-          <h2>I work between the field note and the briefing note.</h2>
-        </div>
-        <div className="aboutBody">
-          <p>
-            I am a Vancouver-based policy researcher and writer with experience
-            in program implementation, stakeholder engagement, regulatory interpretation,
-            mixed-methods research, and public communication.
-          </p>
-          <p>
-            My work has moved through Indigenous workforce programming, homelessness
-            and public-space policy, maternal-health access, gender-based violence,
-            and sustainable development. Across those contexts, the question remains
-            consistent: how can institutions understand people without reducing them
-            to what a form, metric, or funding agreement can hold?
-          </p>
-          <div className="contactLinks">
-            <a href="mailto:yatindua144@gmail.com">yatindua144@gmail.com</a>
-            <a href="https://www.linkedin.com/in/yatindua17/" target="_blank" rel="noreferrer">LinkedIn</a>
-            <a href="https://yatindua.substack.com/" target="_blank" rel="noreferrer">Substack</a>
-            <span>Vancouver, British Columbia</span>
-          </div>
-        </div>
-      </section>
-
-      <footer className="footer shell">
-        <span>© 2026 Yatin Dua</span>
-        <div className="footerLinks">
-          <a href="https://www.linkedin.com/in/yatindua17/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
-          <a href="https://yatindua.substack.com/" target="_blank" rel="noreferrer">Substack ↗</a>
-          <a href="#top">Return to top ↑</a>
-        </div>
-      </footer>
+      <footer className="livingFooter shell"><span>© 2026 Yatin Dua</span><span>Vancouver, British Columbia</span><div><a href="/ideas">Writing</a><a href="https://www.linkedin.com/in/yatindua17/" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="#top">Top ↑</a></div></footer>
     </main>
   );
 }

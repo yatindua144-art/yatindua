@@ -3,10 +3,10 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "Yatin Dua | Policy Researcher and Writer",
+    default: "Yatin Dua | Writer and Researcher",
     template: "%s | Yatin Dua",
   },
-  description: "Policy research, program practice, field observations, public writing, and active questions from Vancouver-based policy practitioner Yatin Dua.",
+  description: "Essays, public writing, field research, and open questions from Vancouver-based writer and researcher Yatin Dua.",
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "The Vancouver election question nobody is asking",
@@ -41,13 +42,13 @@ export default function VancouverElectionQuestionPage() {
   return (
     <main className="articlePage" id="top">
       <nav className="nav shell libraryNav" aria-label="Article navigation">
-        <a className="identity" href="/">
+        <Link className="identity" href="/">
           <strong>Yatin Dua</strong>
           <span>Vancouver, BC</span>
-        </a>
+        </Link>
         <div className="navLinks">
-          <a href="/">Portfolio</a>
-          <a href="/ideas">Ideas &amp; writing</a>
+          <Link href="/">Home</Link>
+          <a href="/ideas">Writing</a>
           <a href="#stakes">The file</a>
           <a href="#fragmentation">Fragmentation</a>
           <a href="#actions">What to do</a>
