@@ -94,7 +94,7 @@ export default function Home() {
 
       <section className="humanDoor shell"><p>05 / This part is human</p><h2>Still have a question?</h2><div><p>Good. Send it to me.</p><a href="mailto:yatindua144@gmail.com">yatindua144@gmail.com <span>↗</span></a></div></section>
 
-      <footer className="livingFooter shell"><span>© 2026 Yatin Dua</span><span>Vancouver, British Columbia</span><div><a href="/writing">Writing</a><a href="https://www.linkedin.com/in/yatindua17/" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="#top">Top ↑</a></div></footer>
+      <footer className="livingFooter shell"><span>© 2026 Yatin Dua</span><span>Vancouver, British Columbia</span><div><a href="/writing">Writing</a><a href="https://yatindua.substack.com" target="_blank" rel="noreferrer">Substack ↗</a><a href="https://www.linkedin.com/in/yatindua17/" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="#top">Top ↑</a></div></footer>
     </main>
   );
 }
