@@ -19,7 +19,7 @@ export default function Home() {
     <main className="livingHome" id="top">
       <section className="livingHero">
         <nav className="nav shell livingNav" aria-label="Primary navigation">
-          <a className="identity" href="#top"><strong>Yatin Dua</strong><span>Writer / Researcher</span></a>
+          <a className="identity" href="#top"><strong>Yatin Dua</strong><span>Policy / Research / Programs</span></a>
           <div className="navLinks">
             <a href="#writing">Writing</a><a href="#questions">Questions</a><a href="#about">About</a><a href="mailto:yatindua144@gmail.com">Say hello ↗</a>
           </div>
@@ -27,15 +27,15 @@ export default function Home() {
 
         <div className="livingHeroGrid shell">
           <header className="livingHeroCopy">
-            <p className="liveEyebrow"><span aria-hidden="true" /> Vancouver / August 2026</p>
+            <p className="liveEyebrow"><span aria-hidden="true" /> Vancouver / 2026</p>
             <h1>I do not trust <em>the first</em> explanation.</h1>
-            <p>Writing about public systems, power, and the distance between how institutions describe people and how people experience them.</p>
+            <p>I work across policy, research, program delivery, and public-interest writing, especially where institutions, evidence, and implementation do not line up neatly.</p>
           </header>
           <ConversationGuide />
         </div>
 
         <div className="signalTicker" aria-hidden="true"><div className="tickerTrack">
-          <span>Editing</span><i>✦</i><span>Public systems</span><i>✦</i><span>Vancouver</span><i>✦</i><span>Evidence</span><i>✦</i><span>Open questions</span><i>✦</i><span>Editing</span><i>✦</i><span>Public systems</span><i>✦</i><span>Vancouver</span><i>✦</i>
+          <span>Policy</span><i>✦</i><span>Research</span><i>✦</i><span>Program delivery</span><i>✦</i><span>Evidence</span><i>✦</i><span>Public systems</span><i>✦</i><span>Policy</span><i>✦</i><span>Research</span><i>✦</i><span>Program delivery</span><i>✦</i>
         </div></div>
       </section>
 
@@ -65,11 +65,11 @@ export default function Home() {
       </div></section>
 
       <section className="conversationAbout section shell" id="about">
-        <div className="aboutPrompt"><p className="sectionCode">04 / The obvious question</p><p>You might be asking:</p><h2>Why writing<br />after policy?</h2></div>
+        <div className="aboutPrompt"><p className="sectionCode">04 / The connecting thread</p><p>You might be asking:</p><h2>What connects<br />the work?</h2></div>
         <div className="aboutAnswer">
-          <p className="aboutLead">Because policy taught me to find the decision buried inside a document. Writing makes that judgment useful to a reader.</p>
-          <div className="aboutColumns"><p>I am a writer and researcher based in Vancouver. My work moves across public systems, field research, program delivery, and the language institutions use to explain their choices.</p><p>I am looking for editorial and research roles where judgment matters: deciding what the real question is, what the evidence supports, what the prose is hiding, and what a reader needs next.</p></div>
-          <div className="thinkingTags" aria-label="Areas of practice"><span>Field research</span><span>Public systems</span><span>Editorial judgment</span><span>Community knowledge</span></div>
+          <p className="aboutLead">Policy, research, program delivery, and writing all ask the same thing of me: find the real problem, understand what the evidence supports, and make the next decision clearer.</p>
+          <div className="aboutColumns"><p>I am based in Vancouver and work across public systems, field research, program delivery, evaluation, and the language institutions use to explain their choices.</p><p>I am most interested in work where research, judgment, communication, and implementation meet, especially when a complex problem has to become something people can actually use.</p></div>
+          <div className="thinkingTags" aria-label="Areas of practice"><span>Policy analysis</span><span>Program delivery</span><span>Research</span><span>Public-interest writing</span></div>
         </div>
       </section>
 
