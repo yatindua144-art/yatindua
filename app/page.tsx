@@ -1,10 +1,23 @@
 import ConversationGuide from "./components/ConversationGuide";
 
-const selectedWork = [
-  { number: "01", date: "August 2026", type: "Editing", title: "The Most Important Sentence Is Usually Buried", description: "What policy and academic writing taught me about editing research for a public reader.", href: "/ideas/important-sentence", className: "workCard workCardFeature workCardCoral" },
-  { number: "02", date: "August 2026", type: "Municipal affairs", title: "The Vancouver Election Question Nobody Is Asking", description: "The consequential question is not only who wins, but what the next political arrangement lets City Hall keep doing.", href: "/ideas/vancouver-election-question", className: "workCard workCardBlue" },
-  { number: "03", date: "July 2026", type: "Evaluation note", title: "The Pass Rate Is Not the Outcome", description: "A blueprint for evaluating training through readiness, safety, and the feedback loop after graduation.", href: "/ideas/pass-rate", className: "workCard workCardLime" },
-  { number: "04", date: "November 2024", type: "Research essay", title: "Community Care in Action", description: "What a neighbourhood institution can contribute to Vancouver's response to homelessness, and where its role should end.", href: "/ideas/community-care", className: "workCard workCardInk" },
+type WorkItem = {
+  number: string;
+  date: string;
+  type: string;
+  title: string;
+  description: string;
+  href: string;
+  className: string;
+  external?: boolean;
+};
+
+const selectedWork: WorkItem[] = [
+  { number: "01", date: "August 2026", type: "Editing", title: "The Most Important Sentence Is Usually Buried", description: "What policy and academic writing taught me about editing research for a public reader.", href: "/writing/important-sentence", className: "workCard workCardFeature workCardCoral" },
+  { number: "02", date: "August 2026", type: "Municipal affairs", title: "The Vancouver Election Question Nobody Is Asking", description: "The consequential question is not only who wins, but what the next political arrangement lets City Hall keep doing.", href: "/writing/vancouver-election-question", className: "workCard workCardBlue" },
+  { number: "03", date: "July 2026", type: "Evaluation note", title: "The Pass Rate Is Not the Outcome", description: "A blueprint for evaluating training through readiness, safety, and the feedback loop after graduation.", href: "/writing/pass-rate", className: "workCard workCardLime" },
+  { number: "04", date: "April 2026", type: "Climate and Indigenous policy", title: "More Than Stewards", description: "Why Canada's clean-energy transition needs Indigenous leadership, not Indigenous symbolism.", href: "https://www.linkedin.com/pulse/more-than-stewards-why-canadas-clean-energy-transition-yatin-dua-bhave/", className: "workCard workCardInk", external: true },
+  { number: "05", date: "November 2024", type: "Research essay", title: "Community Care in Action", description: "What a neighbourhood institution can contribute to Vancouver's response to homelessness, and where its role should end.", href: "/writing/community-care", className: "workCard workCardBlue" },
+  { number: "06", date: "June 2021", type: "Other writing / Poetry", title: "Burning Dry", description: "An illustrated poem on nation, identity, violence, and the colours made to carry them, published by Gaysi Family.", href: "https://www.gaysifamily.com", className: "workCard workCardCoral", external: true },
 ];
 
 const openQuestions = [
@@ -21,7 +34,7 @@ export default function Home() {
         <nav className="nav shell livingNav" aria-label="Primary navigation">
           <a className="identity" href="#top"><strong>Yatin Dua</strong><span>Policy / Research / Programs</span></a>
           <div className="navLinks">
-            <a href="#writing">Writing</a><a href="#questions">Questions</a><a href="#about">About</a><a href="mailto:yatindua144@gmail.com">Say hello ↗</a>
+            <a href="#writing">Writing</a><a href="#questions">Questions</a><a href="/cv">About</a><a href="mailto:yatindua144@gmail.com">Say hello ↗</a>
           </div>
         </nav>
 
@@ -41,18 +54,24 @@ export default function Home() {
 
       <section className="workPortal section shell" id="writing">
         <div className="portalHeading">
-          <p className="sectionCode">02 / Enter the work</p><h2>Choose a way in.</h2><p>Four arguments. Four different tests of the easy explanation.</p>
+          <p className="sectionCode">02 / Enter the work</p><h2>Choose a way in.</h2><p>Six pieces. Six different tests of the easy explanation.</p>
         </div>
         <div className="bentoWork">
           {selectedWork.map((item) => (
-            <a className={item.className} href={item.href} key={item.title}>
+            <a
+              className={item.className}
+              href={item.href}
+              key={item.title}
+              target={item.external ? "_blank" : undefined}
+              rel={item.external ? "noreferrer" : undefined}
+            >
               <div className="workCardMeta"><span>{item.number}</span><span>{item.date}</span></div>
               <div className="workCardBody"><p>{item.type}</p><h3>{item.title}</h3><div>{item.description}</div></div>
-              <span className="workCardArrow" aria-hidden="true">↗</span>
+              <span className="workCardArrow" aria-hidden="true">{item.external ? "↗" : "→"}</span>
             </a>
           ))}
         </div>
-        <a className="archiveDoor" href="/ideas"><span>Not sure where to begin?</span><strong>See the complete writing archive</strong><b aria-hidden="true">→</b></a>
+        <a className="archiveDoor" href="/writing"><span>Not sure where to begin?</span><strong>See the complete writing archive</strong><b aria-hidden="true">→</b></a>
       </section>
 
       <section className="questionLab section" id="questions"><div className="shell">
@@ -75,7 +94,7 @@ export default function Home() {
 
       <section className="humanDoor shell"><p>05 / This part is human</p><h2>Still have a question?</h2><div><p>Good. Send it to me.</p><a href="mailto:yatindua144@gmail.com">yatindua144@gmail.com <span>↗</span></a></div></section>
 
-      <footer className="livingFooter shell"><span>© 2026 Yatin Dua</span><span>Vancouver, British Columbia</span><div><a href="/ideas">Writing</a><a href="https://www.linkedin.com/in/yatindua17/" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="#top">Top ↑</a></div></footer>
+      <footer className="livingFooter shell"><span>© 2026 Yatin Dua</span><span>Vancouver, British Columbia</span><div><a href="/writing">Writing</a><a href="https://www.linkedin.com/in/yatindua17/" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="#top">Top ↑</a></div></footer>
     </main>
   );
 }
